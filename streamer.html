@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hello Bulma!</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    </head>
+    <body>
+        <section class="section">
+            <div class="container">
+                <pre><code id="jsonOut">
+                    Wait while you are being redirected...
+                </code></pre>
+            </div>
+        </section>
+        <script>
+            if(window.location.hash) {
+                var string = decodeURIComponent(document.location.hash);
+                var regex = /(\#|\&|\?)([^=]+)\=([^(&|#)]+)/g;
+
+                var response = {};
+
+                while ((matches = regex.exec(string)) != null) {
+                    response[matches[2]] = matches[3];
+                }
+
+                document.getElementById("jsonOut").innerHTML = JSON.stringify(response, null, 2);
+            } else {
+                window.location.replace("https://id.twitch.tv/oauth2/authorize?client_id=isj02fwo9wpb2ggyxf9s3zxy57uj4c&redirect_uri=" + window.location.protocol + "//" + window.location.host + "/yerryminabot.github.io/streamer.html&response_type=token&scope=channel:read:subscriptions&force_verify=true");
+            }
+        </script>
+    </body>
+</html>
