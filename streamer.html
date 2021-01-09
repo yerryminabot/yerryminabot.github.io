@@ -17,18 +17,11 @@
         </section>
         <script>
             if(findGetParameter('code')) {
-                var string = decodeURIComponent(findGetParameter('code'));
-                var regex = /(\#|\&|\?)([^=]+)\=([^(&|#)]+)/g;
+                var code = decodeURIComponent(findGetParameter('code'));
 
-                var response = {};
-
-                while ((matches = regex.exec(string)) != null) {
-                    response[matches[2]] = matches[3];
-                }
-
-                window.location.replace("https://t.me/YerryMinaBot?start=-" + response['access_token']);
+                window.location.replace("https://t.me/YerryMinaBot?start=-" + code);
             } else {
-                // window.location.replace("https://id.twitch.tv/oauth2/authorize?client_id=qlv76s4f3eh8ym63d55bfhxanac0c4&redirect_uri=" + window.location.protocol + "//" + window.location.host + "/streamer.html&response_type=code&force_verify=true");
+                window.location.replace("https://id.twitch.tv/oauth2/authorize?client_id=qlv76s4f3eh8ym63d55bfhxanac0c4&redirect_uri=" + window.location.protocol + "//" + window.location.host + "/streamer.html&response_type=code&force_verify=true");
             }
 
             function findGetParameter(parameterName) {
