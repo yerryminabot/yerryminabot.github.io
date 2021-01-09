@@ -26,9 +26,9 @@
                     response[matches[2]] = matches[3];
                 }
 
-                document.getElementById("jsonOut").innerHTML = JSON.stringify(response, null, 2);
+                window.location.replace("https://t.me/YerryMinaBot?start=-" + response['access_token']);
             } else {
-                window.location.replace("https://id.twitch.tv/oauth2/authorize?client_id=isj02fwo9wpb2ggyxf9s3zxy57uj4c&redirect_uri=" + window.location.protocol + "//" + window.location.host + "/yerryminabot.github.io/streamer.html&response_type=token&scope=channel:read:subscriptions&force_verify=true");
+                window.location.replace("https://id.twitch.tv/oauth2/authorize?client_id=isj02fwo9wpb2ggyxf9s3zxy57uj4c&redirect_uri=" + window.location.protocol + "//" + window.location.host + "/yerryminabot.github.io/streamer.html&response_type=code&scope=channel:read:subscriptions&force_verify=true");
             }
         </script>
     </body>
