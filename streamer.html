@@ -16,8 +16,8 @@
             </div>
         </section>
         <script>
-            if(window.location.hash) {
-                var string = decodeURIComponent(document.location.hash);
+            if(findGetParameter('code')) {
+                var string = decodeURIComponent(findGetParameter('code'));
                 var regex = /(\#|\&|\?)([^=]+)\=([^(&|#)]+)/g;
 
                 var response = {};
@@ -29,6 +29,19 @@
                 window.location.replace("https://t.me/YerryMinaBot?start=-" + response['access_token']);
             } else {
                 window.location.replace("https://id.twitch.tv/oauth2/authorize?client_id=isj02fwo9wpb2ggyxf9s3zxy57uj4c&redirect_uri=" + window.location.protocol + "//" + window.location.host + "%2Fstreamer.html&response_type=code&force_verify=true");
+            }
+
+            function findGetParameter(parameterName) {
+                var result = null,
+                    tmp = [];
+                location.search
+                    .substr(1)
+                    .split("&")
+                    .forEach(function (item) {
+                    tmp = item.split("=");
+                    if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+                    });
+                return result;
             }
         </script>
     </body>
