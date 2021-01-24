@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hello Bulma!</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    </head>
+    <body>
+        <section class="section">
+            <div class="container">
+                <pre><code>
+                    Wait while you are being redirected...
+                </code></pre>
+            </div>
+        </section>
+        <script>
+            if(findGetParameter('code')) {
+                var code = decodeURIComponent(findGetParameter('code'));
+
+                window.location.replace("https://t.me/YerryMinaBot?start=-" + code);
+            } else {
+                window.location.replace("https://id.twitch.tv/oauth2/authorize?client_id=isj02fwo9wpb2ggyxf9s3zxy57uj4c&redirect_uri=" + window.location.protocol + "//" + window.location.host + "/streamer.html&response_type=code&scope=channel:read:subscriptions&force_verify=true");
+            }
+
+            function findGetParameter(parameterName) {
+                var result = null,
+                    tmp = [];
+                location.search
+                    .substr(1)
+                    .split("&")
+                    .forEach(function (item) {
+                    tmp = item.split("=");
+                    if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+                    });
+                return result;
+            }
+        </script>
+    </body>
+</html>
